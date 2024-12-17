@@ -1,0 +1,56 @@
+{% extends 'main/main-base.html' %}
+{% load static %}
+{% block link %}
+
+<style>
+    .anker-link{
+        transition: 1s;
+    }
+</style>
+
+{% endblock link %}
+
+
+{% block content %}
+
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+
+    <div class="row">
+
+        <div class="col-lg-6 ">
+            <!-- Circle Buttons -->
+            <div class="card shadow mb-4">
+                <div class="card-header py-3 d-flex justify-content-center">
+                    <a class="anker-link p-2 text-center" href="{% url 'coldcoffee' %}">
+                    <img src="{% static 'img/coldcoffee.jpg' %}" width="200px" height="150px" alt="">
+
+                        <h3 class="m-0 font-weight-bold text-primary">Cold Coffee</h3> 
+                    </a>
+                </div>
+            </div>
+        </div>
+
+<!-- Hot Beverages -->
+        <div class="col-lg-6">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3 d-flex justify-content-center">
+                    <a href="{% url 'hotcoffee' %}">
+                    <img src="{% static 'img/hotcoffee.jpg' %}" width="200px" height="150px" alt="">
+                    
+                        <h3 class="m-0 font-weight-bold text-primary text-center p-2 ">Hot Coffee</h3> 
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<img src="" alt="">
+<!-- /.container-fluid -->
+
+{% endblock content %}

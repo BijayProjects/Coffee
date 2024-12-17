@@ -1,0 +1,36 @@
+{% extends 'main/main-base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="d-flex justify-content-between">
+        <p class="fs-1 text-center">Cold Coffee</p>
+        <a href="{% url 'Admin_menu' %}">
+            <button type="button" class="btn btn-primary">Main Menu</button>
+        </a>
+        <a href="{% url 'addcoldcoffee' %}">
+            <button type="button" class="btn btn-primary"><i class="fa fa-plus" ></i> </button>
+        </a>
+    </div>
+    <hr style="border:1px solid gray">
+    <div class="wrapper">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 gap-50 d-flex  ">
+            {% for cold in view_cold_coffee %}
+            <div class="col p-5 mb-2">
+                <div class="card" style="width: 18rem;">
+                    <img src="{{cold.images.url}}" class="card-img-top" height="250px" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title"> <b>{{cold.title}}</b> </h5>
+                      <p class="card-text"> {{cold.descriptions}} </p>
+                      <p class="text-center alert-info p-2"><b>NRs. {{cold.price}}</b></p>
+                      <a href="#" class="btn btn-primary">Edit</a>
+                      <a href="{% url 'product-delete' cold.id %}" class="btn btn-danger">Delete</a>
+                    </div>
+                </div>                
+            </div>     
+            {% endfor %}           
+            
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

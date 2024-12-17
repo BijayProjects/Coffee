@@ -1,0 +1,35 @@
+{% extends 'main/main-base.html' %}
+
+{% block content %}
+
+<!-- updated -->
+
+<div class="modal-content">
+    <div class="modal-header text-center">
+        <h1 class="modal-title fs-5 text-center">Offer And Services Updating</h1>
+    </div>
+    <div class="modal-body">
+        <form action="{% url 'offer-update' upOffers.id %}" method="POST">
+        {% csrf_token %}
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1">Discount </span>
+            <input type="text" class="form-control" name="discount" value="{{upOffers.discount_percent}}" placeholder="Discount %"  aria-describedby="basic-addon1">
+            <span class="input-group-text" id="basic-addon1">%</span>
+        </div>
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon2">Event Descriptions </span>
+            <input type="text" class="form-control" value="{{upOffers.descriptions}}" name="descriptions" placeholder="Event Descriptions" aria-describedby="basic-addon2">
+        </div>
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon3">Event Time</span>
+            <input type="text" class="form-control" value="{{upOffers.offer_starting_time}}" name="event-time" placeholder="Event Time" aria-describedby="basic-addon3">
+        </div>
+        <button type="submit" class="btn btn-success"><i class="fa fa-upload"></i> Update Event</button>            
+        </form><br><br>       
+        <a href="{% url 'offer_services' %}" class="py-5 mb-5 w-20">
+            <button type="button" class="btn btn-outline-info"><i class="fa fa-arrow-left"></i> Go Back</button>
+        </a>
+    </div>
+</div>
+
+{% endblock content %}

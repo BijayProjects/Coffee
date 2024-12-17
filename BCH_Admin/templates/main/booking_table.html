@@ -1,0 +1,121 @@
+{% extends 'main/main-base.html' %}
+
+
+{% block content %}
+
+    <!-- Begin Page Content -->
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h1 mb-2 text-gray-800">Booking a Table</h1>
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3 d-flex justify-content-around">
+            <h3 class="m-0 font-weight-bold text-primary">Booking Details</h3>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                <i class="fa fa-download" ></i> Add Booking
+              </button>
+
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Numbers Of People</th>
+                            <th>E-mail</th>
+                            <th>Date & Time</th>
+                            <th>Booked Time</th>
+                            <th>Activity</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>Name</th>
+                            <th>Numbers Of People</th>
+                            <th>E-mail</th>                            
+                            <th>Date & Time</th>
+                            <th>Booked Time</th>
+                            <th>Activity</th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        {% for book in book_info reversed %}
+                        <tr>
+                            <td> <strong>{{book.name}} </strong></td>
+                            <td>{{book.person}}</td>
+                            <td> <a href="mailto:{{book.email}}" style="text-decoration: none;" ><strong>{{book.email}}</strong></a> </td>
+                            
+                            <td> {{book.date}}/ {{book.time}} </td>
+                            <td><a href="" style="text-decoration: none;color: #049417; font-weight: bold;" >{{book.check_table | upper }}</a> </td>
+                            <td>
+                                <button type="button" class="btn btn-success"><i class="fa fa-pen" ></i> </button>
+                                <button type="button" class="btn btn-danger"><i class="fa fa-trash" ></i> </button>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                        
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- Button trigger modal -->
+
+  
+  <!-- Modal -->
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form action="{% url 'table' %}" method="POST">
+                {% csrf_token %}
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Name</span>
+                    <input type="text" class="form-control" name="name" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Numbers Of People</span>
+                    <input type="text" class="form-control" name="number-of-person" placeholder="Numbers of Person" aria-label="Username" aria-describedby="basic-addon1">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">E-mail</span>
+                    <input type="text" class="form-control" name="email" placeholder="E-mail" aria-label="Username" aria-describedby="basic-addon1">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Date</span>
+                    <input type="text" class="form-control" name="date"  placeholder="Date" aria-label="Username" aria-describedby="basic-addon1">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Time</span>
+                    <input type="text" class="form-control" name="time"  placeholder="Time" aria-label="Username" aria-describedby="basic-addon1">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Table Available</span>
+                    <select class="form-select" name="check_booking"  aria-label="Default select example">
+                        <option selected>Booking Info</option>
+                        <option value="Available">Available</option>
+                        <option value="Not Available">Not Available</option>
+                      </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Book Now</button>
+            </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>          
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+{% endblock content %}

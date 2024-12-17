@@ -1,0 +1,87 @@
+{% extends 'main/main-base.html' %}
+{% load static  %}
+
+{% block link %}
+
+<style>
+    .main-body{
+        font-weight: bold;
+
+    }
+</style>
+
+{% endblock link %}
+
+{% block content %}
+
+
+<!-- Begin Page Content -->
+<div class="container-fluid">
+    <h3>About Section</h3> 
+
+    {% if messages %}
+      {% for message in messages %}
+
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{message}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+      {% endfor %}
+
+    {% endif %}
+
+    <!-- About section of the page on the editing page -->
+    <div class="row">
+
+        <div class="col-lg-6">
+
+            <!-- Default Card Example -->
+            <div class="card mb-4">
+
+              {% for story in about_show_story %}
+                <div class="card-header d-flex ">
+                    <h2 class="">Our Story</h2>
+                    <button type="button" class="btn btn-primary my-2 ms-auto" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap" style=" color: #ffffff; font-size: 18px;"><i class="fa fa-plus" style=" color: #ffffff; font-size: 17px;"></i>Our Story</button>
+                    <button type="button" class="btn btn-primary my-2 ms-auto" data-bs-toggle="modal" data-bs-target="#exampleModal_update" data-bs-whatever="@getbootstrap" style=" color: #ffffff; font-size: 18px;"><a href="{% url 'story_update' story.id %}" style="color: #ffffff;text-decoration: none;">Update</a></button>
+                    <!-- <button type="button" class="btn btn-outline-primary ms-auto p-2">Update</button> -->
+                </div>
+                <div class="card-body main-body">
+                  {{story.sub_body}}
+                </div>
+                <div class="card-body">
+                    {{story.main_body}}
+                </div>
+                {% endfor %}
+            </div>
+
+        </div>
+        <div class="col-lg-6">
+
+            <!-- Default Card Example -->
+            {% for vision in about_show_vision %}
+            <div class="card mb-4">
+
+                <div class="card-header d-flex ">
+                    <h2 class="">Our Vision</h2>
+                    <button type="button" class="btn btn-primary my-2  ms-auto" data-bs-toggle="modal" data-bs-target="#exampleModal_1" data-bs-whatever="@getbootstrap" style=" color: #ffffff; font-size: 18px;"><i class="fa fa-plus" style=" color: #ffffff; font-size: 17px;"></i>Our Vision</button>
+                    <button type="button" class="btn btn-primary my-2  ms-auto" data-bs-toggle="modal" data-bs-target="#exampleModal_update_1" data-bs-whatever="@getbootstrap" style=" color: #ffffff; font-size: 18px;"><a href="{% url 'vision_update' vision.id  %} " style="color: #ffffff; text-decoration: none;">Update</a></button>
+                    <!-- <button type="button" class="btn btn-outline-primary ms-auto p-2">Update</button> -->
+                </div>
+                
+                <div class="card-body">
+                    {{vision.sub_body}}
+                </div>
+                {% endfor %}
+            </div>
+
+        </div>
+
+        
+
+    </div>
+
+</div>
+
+<!-- data input section end  it's hidden-->
+
+{% endblock content %}

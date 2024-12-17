@@ -1,0 +1,39 @@
+{% extends '../main/main-base.html' %}
+
+{% block content %}
+
+
+<div class="container">
+    <H1 class="fs-1">Hot Coffee</H1>
+</div>
+<div class="container">
+    <div class="wrapper">
+        <div class="containe py-5 w-50 mx-50">
+            <form action="{% url 'addhotcoffee' %}" method="POST" enctype="multipart/form-data" >
+                {% csrf_token %}
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Product Title</label>
+                  <input type="text" placeholder="Title" class="form-control" name="title" required >
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputPassword1" class="form-label">Price</label>
+                  <input type="text" placeholder="Price" class="form-control"  name="price" required >
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputPassword1" class="form-label">Descriptions</label>
+                  <textarea class="form-control" placeholder="Descriptions" style="height: 100px" name="descriptions" required ></textarea>
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputPassword1" class="form-label">Select Images</label>
+                  <input type="file" class="form-control" name="image" required >
+                </div>
+                
+                <button type="submit" class="btn btn-primary"><i class="fa fa-upload"></i> Upload</button>
+            </form>
+        </div>
+    </div>
+</div>
+          
+
+
+{% endblock content %}

@@ -1,0 +1,31 @@
+{% extends 'main/main-base.html' %}
+
+
+{% block content %}
+ 
+
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Our Vision</h1>
+        </div>
+        <div class="modal-body">
+          <form action="{% url 'story_update' su.id %}" method="POST" >
+            {% csrf_token %}
+            <div class="form-floating mb-4 ">
+                <textarea class="form-control" name="new_story_update1" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 200px"> {{su.sub_body}} </textarea>
+                <label for="floatingTextarea2">Sub Body:</label>
+            </div>
+            <div class="form-floating mb-4">
+                <textarea class="form-control" name="new_story_update2" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 200px"> {{su.main_body}} </textarea>
+                <label for="floatingTextarea2">Main Body:</label>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Update Vision</button>
+          </form>
+        </div>
+      </div>
+    </div>
+ 
+
+{% endblock content %}

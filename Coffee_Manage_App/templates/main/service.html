@@ -1,0 +1,91 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block body %}
+
+    <!-- Page Header Start -->
+    <div class="container-fluid page-header mb-5 position-relative overlay-bottom">
+        <div class="d-flex flex-column align-items-center justify-content-center pt-0 pt-lg-5" style="min-height: 400px">
+            <h1 class="display-4 mb-3 mt-0 mt-lg-5 text-white text-uppercase">Services</h1>
+            <div class="d-inline-flex mb-lg-5">
+                <p class="m-0 text-white"><a class="text-white" href="{% url 'home' %}">Home</a></p>
+                <p class="m-0 text-white px-2">/</p>
+                <p class="m-0 text-white">Services</p>
+            </div>
+        </div>
+    </div>
+    <!-- Page Header End -->
+
+
+    <!-- Service Start -->
+    <div class="container-fluid pt-5" >
+        <div class="container">
+            <div class="section-title" data-aos="zoom-in-left">
+                <h4 class="text-primary text-uppercase" style="letter-spacing: 5px;">Our Services</h4>
+                <h1 class="display-4">Fresh & Organic Beans</h1>
+
+            </div>
+            <div class="row" >
+                <div class="col-lg-6 mb-5" >
+                    <div class="row align-items-center" data-aos="zoom-in-left">
+                        <div class="col-sm-5" >
+                            <img class="img-fluid mb-3 mb-sm-0" src="{% static 'img/service-1.jpg' %}" alt="">
+                        </div>
+                        <div class="col-sm-7">
+                            <h5><i class="fa fa-truck service-icon"></i>Fastest Door Delivery</h5>
+                            <!-- <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Upcoming Feature</h6> -->
+                            <p class="m-0">We have this feature as well for those how are now able to at the cafe and are not free or have enough time to visit the cafe for the coffee,
+                                we will help you to save your time and we delivery our beverages right into your door. Stay up, We will delivery your beverage as much as fast we could. 
+                            </p>
+                            <a href="" class="btn btn-primary font-weight-bold py-2 px-4 mt-2">Your Order</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-5">
+                    <div class="row align-items-center" data-aos="zoom-in-right">
+                        <div class="col-sm-5">
+                            <img class="img-fluid mb-3 mb-sm-0" src="{% static 'img/service-2.jpg' %}" alt="">
+                        </div>
+                        <div class="col-sm-7">
+                            <h4><i class="fa fa-coffee service-icon"></i>Fresh Coffee Beans</h4>
+                            <p class="m-0">Sit lorem ipsum et diam elitr est dolor sed duo. Guberg sea et et lorem dolor sed est sit
+                                invidunt, dolore tempor diam ipsum takima erat tempor
+                            </p>
+                            <a href="" class="btn btn-primary font-weight-bold py-2 px-4 mt-2">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-5">
+                    <div class="row align-items-center" data-aos="zoom-in-left">
+                        <div class="col-sm-5">
+                            <img class="img-fluid mb-3 mb-sm-0" src="{% static 'img/service-3.jpg' %}" alt="">
+                        </div>
+                        <div class="col-sm-7">
+                            <h4><i class="fa fa-award service-icon"></i>Best Quality Coffee</h4>
+                            <p class="m-0">
+                                We use the most popular coffee been of Nepal, That Might Bring the best Test to your coffee.
+                            </p>
+                            <a href="" class="btn btn-primary font-weight-bold py-2 px-4 mt-2">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-5">
+                    <div class="row align-items-center" data-aos="zoom-in-right">
+                        <div class="col-sm-5">
+                            <img class="img-fluid mb-3 mb-sm-0" src="{% static 'img/service-4.jpg' %}" alt="">
+                        </div>
+                        <div class="col-sm-7">
+                            <h4><i class="fa fa-table service-icon"></i>Online Table Booking</h4>
+                            <p class="m-0">If You don't want to lose your table and don't want to wait for another table, So to resolving this problems solution we have provided a Service that allow you to book your table online.</p>
+                            <a href="/#booking-tables" class="btn btn-primary font-weight-bold py-2 px-4 mt-2">Book Your Table</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Service End -->
+
+{% endblock body %}
+
+

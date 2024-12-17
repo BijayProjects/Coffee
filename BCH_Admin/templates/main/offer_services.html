@@ -1,0 +1,113 @@
+{% extends 'main/main-base.html' %}
+
+{% block content %}
+
+        <!-- Begin Page Content -->
+<div class="container-fluid mb-5">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-1 text-gray-800">Offer and Service</h1>
+    <p class="mb-4">Providing a Offer and Service that will satisfy to our Client and More and More..</p>
+
+    {% if messages %}
+
+    {% for message in messages %}
+        
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>{{message}}</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+    {% endfor %}
+    {% endif %}
+
+    <!-- Content Row -->
+    <div class="row">
+        <!-- Border Bottom Utilities -->
+        <div class="col-lg-12">
+            <div class="card mb-4 py-3 border-bottom-dark">
+                <div class="btn">
+                    <a href="#" class="btn btn-primary btn-circle px-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop" ><i class="fa fa-plus p-3"></i></a>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        {% for service in show_offer %}
+                        <div class="col-xl-8 col-lg-8">
+                            <!-- Service -->
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-1">
+                                    <h2 class="m-0 font-weight-bold text-primary text-center">Offer Service</h2>
+                                </div>
+                                <div class="card-body text-center">
+
+                                    <h1><b>{{service.discount_percent}}% </b></h1>
+                                    <h4>{{service.descriptions}} </h4>
+                                    <p>{{service.offer_starting_time }} </p>
+                                </div>
+                            </div>                
+                        </div>
+                        <div class="col-xl-4 col-lg-4">
+                            <!-- CRUD for Offer Service -->
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-1">
+                                    <h2 class="m-0 font-weight-bold text-primary text-center"><i class="fa fa-plus p-3"></i>Service</h2>
+                                </div>
+                                <div class="card-body">
+                                    <div class="btn-center d-flex justify-content-center justify-content-between ">
+                                        <a href="{% url 'offer-update' service.id %}" class="btn btn-primary btn-circle px-3"><i class="fa fa-pen p-3"></i></a>
+                                        <a href="#" class="btn btn-primary btn-circle px-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop" ><i class="fa fa-plus p-3"></i></a>
+                                        <a href="{% url 'offer_del' service.id %}"  class="btn btn-danger btn-circle btn-l px-3"><i class="fas fa-trash p-3"></i></a>
+                                    </div>
+                                </div>                                
+                            </div>                
+                        </div>
+                        {% endfor %}
+                    </div>                    
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<!-- /.container-fluid -->
+
+<!-- Button trigger modal -->
+  
+  <!-- Modal -->
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">Offer And Services</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          
+        </div>
+        <div class="modal-body">
+          <form action="{% url 'offer_services' %}" method="POST">
+            {% csrf_token %}
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">Discount </span>
+                <input type="text" class="form-control" name="discount" placeholder="Discount %"  aria-describedby="basic-addon1">
+                <span class="input-group-text" id="basic-addon1">%</span>
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon2">Event Descriptions </span>
+                <input type="text" class="form-control" name="descriptions" placeholder="Event Descriptions" aria-describedby="basic-addon2">
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon3">Event Time</span>
+                <input type="text" class="form-control" name="event-time" placeholder="Event Time" aria-describedby="basic-addon3">
+            </div>
+            <button type="submit" class="btn btn-success"><i class="fa fa-upload"></i> Add Event</button>            
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+</div>
+
+
+{% endblock content %}

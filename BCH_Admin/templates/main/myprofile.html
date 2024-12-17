@@ -1,0 +1,49 @@
+{% extends "main/main-base.html" %}
+{% load static %}
+
+{% block link %}
+
+<style>
+    .mypro{
+        width: 200px;
+        height: 300px;
+    }
+</style>
+{% endblock link %}
+
+{% block content %}
+    
+    <div class="container">
+        <div class="wrapper">
+            <div class="position-relative justify-content-center">
+                <h1>My Profiles</a></h1>
+                <div class="col-md-10 offset-md-10">
+                    <a href="#">
+                        <button type="button" class="btn btn-secondary btn-sm">Change Password</button>
+                    </a>
+                </div>
+            </div>
+
+            <div class="profile text-center">
+                <img class="mypro" src="{% static 'img/undraw_profile.svg' %}" alt=""><br>
+
+                <div class="edit-icon position-relative">
+                    <div class="position-ralative top-0 start-50 translate-middle-x">
+                        <a href=""><i class="fa fa-pen" style="font-size: 30px; color: #717384;" ></i></a>
+                    </div>
+                </div>
+                <label for="h3">UserName:</label><br>
+                <h3> {{user | upper}} </h3>
+
+                <label for="h3">Email:</label><br>
+                <h3> {{user.email}} </h3>                
+                              
+            </div>
+            <hr>   
+            
+
+        </div>
+    </div>
+    
+    
+{% endblock content %}
